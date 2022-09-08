@@ -1,7 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import "./index.css";
 import App from "./App";
 
+const client = new ApolloClient({
+  url: "https://api-us-west-2.hygraph.com/v2/cl7ss8gfx01zv01uqgi6a3960/master",
+  cache: new InMemoryCache(),
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+);
